@@ -18,6 +18,6 @@
     password: <input type="password" name="password" width="10"/>
     <input type="submit" value="Login" />
 </form>
-<p>${errorMsg}</p>
+<p style="color:red">${errorMsg}</p>
 </body>
 </html>
