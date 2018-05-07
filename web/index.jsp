@@ -11,6 +11,11 @@
     <title>Web App Tutorial</title>
   </head>
   <body>
-     <h1>Welcome to the Tutorial</h1>
+  <div id="navbar">
+    <a href="dataeditor"><button>Data Editor</button></a>
+    <a href="index.jsp"><button>Index</button></a>
+    <a href="generator"><button>Generator</button></a>
+  </div>
+     <h1>Welcome to the Name Generator.</h1>
   </body>
 </html>
