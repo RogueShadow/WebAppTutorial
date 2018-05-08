@@ -26,5 +26,7 @@
     <orderEntry type="library" name="chargenlib" level="project" />
     <orderEntry type="library" name="kotlinx-html-jvm-0.6.9" level="project" />
     <orderEntry type="library" name="jOOQ-lib" level="application" />
+    <orderEntry type="library" name="namegenlib" level="project" />
+    <orderEntry type="library" name="postgresql-42.2.2" level="project" />
   </component>
 </module>

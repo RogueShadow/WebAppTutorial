@@ -17,14 +17,17 @@
             <a href="generator"><button>Generator</button></a>
         </div>
         <div id="output">
-            <p>${randomOut}</p>
+            <p>${name}</p>
         </div>
         <div id="genderSelect">
-            <p>DataFile Name: ${dataFileName}</p>
             <form action="generator" method="post">
-                <select name="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                <select name="genderSelect">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="R">Random</option>
+                </select>
+                <select name="worldSelect">
+                    ${worlds}
                 </select>
                 <input type="submit">
             </form>
