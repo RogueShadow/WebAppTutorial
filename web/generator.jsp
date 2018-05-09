@@ -9,22 +9,21 @@
 <html>
     <head>
         <title>Generator App</title>
+        <link rel="stylesheet" href="editor.css">
     </head>
     <body>
-        <div id="navbar">
+        <div class="navbar" id="navbar">
             <a href="dataeditor"><button>Data Editor</button></a>
             <a href="index.jsp"><button>Index</button></a>
             <a href="generator"><button>Generator</button></a>
         </div>
-        <div id="output">
+        <div class="output" id="output">
             <p>${name}</p>
         </div>
         <div id="genderSelect">
             <form action="generator" method="post">
                 <select name="genderSelect">
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                    <option value="R">Random</option>
+                    ${genders}
                 </select>
                 <select name="worldSelect">
                     ${worlds}

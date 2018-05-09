@@ -21,25 +21,33 @@
     <div id="datalists" style="margin:auto;width: 50%;">
         <table cellpadding="0" style="width:900px">
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Male Name</th>
+                <th>Female names</th>
+                <th>Last Names</th>
                 <th>Race</th>
                 <th>Job</th>
                 <th>Place</th>
             </tr>
             <tr>
-                <td><div class="scrollbox" name="names_form">${namesDB}</div></td>
-                <td><div class="scrollbox" name="surnames_form">${surnamesDB}</div></td>
-                <td><div class="scrollbox" name="races_form">${racesDB}</div></td>
-                <td><div class="scrollbox" name="jobs_form">${jobsDB}</div></td>
-                <td><div class="scrollbox" name="places_form">${placesDB}</div></td>
+                <td><div class="scrollbox">${maleNames}</div></td>
+                <td><div class="scrollbox">${femaleNames}</div></td>
+                <td><div class="scrollbox">${lastNames}</div></td>
+                <td><div class="scrollbox">${races}</div></td>
+                <td><div class="scrollbox">${jobs}</div></td>
+                <td><div class="scrollbox">${places}</div></td>
             </tr>
         </table>
         <form method="post" action="dataeditor">
-
-
+            ${selections}
+            <br>
+            <label>Add: <input type="text"  name="addValue" title="Add"></label>
+            <br>
+            <label>Remove: <input type="text" name="removeValue" title="Remove"></label>
+            <br>
+            <select name="worldSelect">${worlds}</select>
             <input type="submit" value="Update">
         </form>
+        <p>${response}</p>
     </div>
 </body>
 </html>

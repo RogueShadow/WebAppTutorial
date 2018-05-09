@@ -14,43 +14,37 @@ class Generator : HttpServlet() {
 
     @Throws(ServletException::class, IOException::class)
     override fun doPost(request: HttpServletRequest, response: HttpServletResponse) {
-        val gender: String? = request.getParameter("genderSelect")
-        Data.db.world = request.getParameter("worldSelect") ?: "default"
+        val gender = request.getParameter("genderSelect") ?: "R"
+        Data.db.world = request.getParameter("worldSelect") ?: Data.db.world
 
-        val name = if (gender == null || gender == "R"){
-            Data.db.getNames(limit = 1)
-        }else{
-            if (gender == "M")Data.db.getNamesM(limit = 1) else Data.db.getNamesF(limit = 1)
-        }
-        val worlds = StringBuilder()
-        Data.db.getWorlds().forEach {
-            worlds.append("<option value=\"$it\">$it</option>\n")
-        }
-        request.setAttribute("worlds",worlds.toString())
-        request.setAttribute("name",name)
+        request.setAttribute("genders",Data.getGenderList(gender))
+        request.setAttribute("worlds",Data.getWorldList())
+        request.setAttribute("name",generate(gender))
         request.getRequestDispatcher("generator.jsp").forward(request,response)
     }
 
     @Throws(ServletException::class, IOException::class)
     override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
-        val gender: String? = request.getParameter("genderSelect")
-        Data.db.world = request.getParameter("worldSelect") ?: "default"
+        val gender = request.getParameter("genderSelect") ?: "R"
+        Data.db.world = request.getParameter("worldSelect") ?: Data.db.world
 
-        val name = if (gender == null || gender == "R"){
-            Data.db.getNames(limit = 1)
-        }else{
-            if (gender == "M")Data.db.getNamesM(limit = 1) else Data.db.getNamesF(limit = 1)
-        }
-
-        val worlds = StringBuilder()
-        Data.db.getWorlds().forEach {
-            worlds.append("<option value=\"$it\">$it</option>\n")
-        }
-
-        request.setAttribute("worlds",worlds.toString())
-        request.setAttribute("name",name)
-
+        request.setAttribute("genders",Data.getGenderList(gender))
+        request.setAttribute("worlds",Data.getWorldList())
+        request.setAttribute("name",generate(gender))
         request.getRequestDispatcher("generator.jsp").forward(request,response)
+    }
+
+    fun generate(gender: String = "R"): String {
+        val fname = when (gender){
+            "M" -> Data.db.getNamesM(limit = 1).first()
+            "F" -> Data.db.getNamesF(limit = 1).first()
+            else -> Data.db.getNames(limit = 1).first()
+        }
+        val lname = Data.db.getSurNames(limit = 1).first()
+        val race = Data.db.getRaces(limit = 1).first()
+        val job = Data.db.getJobs(limit = 1).first()
+        val place = Data.db.getPlaces(limit = 1).first()
+        return "Hello, $fname $lname.<br>Race: $race<br>Job: $job<br>From: $place<br>I hope you are well."
     }
 
 }

@@ -5,3 +5,7 @@
     overflow: auto;
     border: 1px solid dimgray;
 }
+.navbar {
+    border: 2px double #505050;
+    height: 25px border-box;
+}
